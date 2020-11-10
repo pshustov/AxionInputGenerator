@@ -149,14 +149,15 @@ Real* get_f(const Param3& param, const Complex* F)
 	fftw_free(F_copy);
 
 	//normalization
-	Real mean = 0;
+	Real meanSqr = 0;
 	for (size_t i = 0; i < N; i++) {
-		mean += f[i];
+		meanSqr += f[i] * f[i];
 	}
-	mean /= N;
+	meanSqr /= N;
+	Real mul = param.f0 / sqrt(meanSqr);
 	for (size_t i = 0; i < N; i++)
 	{
-		f[i] /= mean;
+		f[i] *= mul;
 	}
 
 	return f;
