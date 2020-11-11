@@ -76,6 +76,9 @@ void printData(const Param3& param, const Real* f, const Real* g)
 	{
 		out << g[i] << "\n";
 	}
+
+	// current time
+	out << 0;
 }
 
 Real* get_g(const Param3& param, const Complex* F)
